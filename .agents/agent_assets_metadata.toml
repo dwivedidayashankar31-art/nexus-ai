@@ -1,0 +1,14 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "d8kRCtV38M9akVSrPW5mW"
+uri = "file://README.md"
+type = "text"
+title = "Nexus AI — README.md"
+
+[[outputs]]
+id = "cyuCNXZ_J3eXnQsISZ4R_"
+uri = "file://nexus-ai.zip"
+type = "unspecified"
+title = "Nexus AI — Full Source Code (ZIP)"
