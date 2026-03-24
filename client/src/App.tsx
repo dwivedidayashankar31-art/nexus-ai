@@ -11,6 +11,7 @@ import PaymentPage from "./pages/payment";
 import LoginPage from "./pages/login";
 import SettingsPage from "./pages/settings";
 import { useAuth } from "./hooks/use-auth";
+import { SettingsProvider } from "./hooks/use-settings";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { user, isLoading } = useAuth();
@@ -41,10 +42,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <SettingsProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </SettingsProvider>
     </QueryClientProvider>
   );
 }

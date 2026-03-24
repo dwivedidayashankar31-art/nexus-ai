@@ -96,6 +96,42 @@
     --input: 240 5% 9%;
     --ring: 221 83% 53%;
   }
+  .light {
+    --button-outline: rgba(0,0,0,.1);
+    --badge-outline: rgba(0,0,0,.06);
+    --opaque-button-border-intensity: 9;
+    --elevate-1: rgba(0,0,0,.03);
+    --elevate-2: rgba(0,0,0,.06);
+    --background: 0 0% 97%;
+    --foreground: 240 10% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 8%;
+    --card-border: 240 5% 88%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 8%;
+    --popover-border: 240 5% 88%;
+    --sidebar: 0 0% 98%;
+    --sidebar-foreground: 240 10% 8%;
+    --sidebar-border: 240 5% 90%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 94%;
+    --sidebar-accent-foreground: 240 10% 8%;
+    --sidebar-ring: 221 83% 53%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 262 83% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 5% 93%;
+    --muted-foreground: 240 5% 40%;
+    --accent: 240 5% 93%;
+    --accent-foreground: 240 10% 8%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5% 88%;
+    --input: 240 5% 92%;
+    --ring: 221 83% 53%;
+  }
 
   * { border-color: hsl(var(--border)); box-sizing: border-box; }
 

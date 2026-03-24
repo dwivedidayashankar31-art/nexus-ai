@@ -114,6 +114,32 @@ export function setupAuth(app: Express) {
     })(req, res, next);
   });
 
+  app.post("/api/change-password", async (req, res) => {
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ message: "Current and new password are required" });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({ message: "New password must be at least 6 characters" });
+    }
+    if (!/[a-zA-Z]/.test(newPassword)) {
+      return res.status(400).json({ message: "New password must contain at least one letter" });
+    }
+    if (!/[0-9]/.test(newPassword)) {
+      return res.status(400).json({ message: "New password must contain at least one number" });
+    }
+    const user = await storage.getUserById((req.user as any).id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    const isValid = await bcrypt.compare(currentPassword, user.password);
+    if (!isValid) return res.status(400).json({ message: "Current password is incorrect" });
+    const hashed = await bcrypt.hash(newPassword, 12);
+    await storage.updateUserPassword(user.id, hashed);
+    res.json({ message: "Password changed successfully" });
+  });
+
   app.post("/api/logout", (req, res) => {
     req.logout((err) => {
       if (err) return res.status(500).json({ message: "Logout failed" });
