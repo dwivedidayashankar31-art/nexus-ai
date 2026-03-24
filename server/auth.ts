@@ -75,6 +75,21 @@ export function setupAuth(app: Express) {
     if (!username || !password) {
       return res.status(400).json({ message: "Username and password are required" });
     }
+    if (username.length < 3 || username.length > 20) {
+      return res.status(400).json({ message: "Username must be between 3 and 20 characters" });
+    }
+    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+      return res.status(400).json({ message: "Username can only contain letters (A-Z) and numbers (0-9)" });
+    }
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters" });
+    }
+    if (!/[a-zA-Z]/.test(password)) {
+      return res.status(400).json({ message: "Password must contain at least one letter" });
+    }
+    if (!/[0-9]/.test(password)) {
+      return res.status(400).json({ message: "Password must contain at least one number" });
+    }
     const existing = await storage.getUserByUsername(username);
     if (existing) {
       return res.status(400).json({ message: "Username already taken" });

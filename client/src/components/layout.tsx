@@ -1,12 +1,13 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Phone, LayoutDashboard, Bot, Zap, Settings, CreditCard } from "lucide-react";
+import { Phone, LayoutDashboard, Bot, CreditCard, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
 const NAV_ITEMS = [
-  { href: "/",        label: "AI Support", icon: Phone,          desc: "Voice & text agent",    badge: "Live" },
-  { href: "/crm",     label: "CRM Portal", icon: LayoutDashboard, desc: "Analytics & management" },
-  { href: "/pricing", label: "Pricing",    icon: CreditCard,      desc: "Plans & billing" },
+  { href: "/",         label: "AI Support", icon: Phone,          desc: "Voice & text agent",    badge: "Live" },
+  { href: "/crm",      label: "CRM Portal", icon: LayoutDashboard, desc: "Analytics & management" },
+  { href: "/pricing",  label: "Pricing",    icon: CreditCard,      desc: "Plans & billing" },
+  { href: "/settings", label: "Settings",   icon: Settings,        desc: "Preferences & config" },
 ];
 
 export function SidebarLayout({ children, pageTitle, pageDesc, headerRight }: {
@@ -105,20 +106,6 @@ export function SidebarLayout({ children, pageTitle, pageDesc, headerRight }: {
             })}
           </div>
 
-          {/* Divider + System section */}
-          <div className="mt-4 pt-3.5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p className="label px-2 mb-2">System</p>
-            <div className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-[8px] cursor-not-allowed opacity-40"
-              style={{ border: "1px solid transparent" }}>
-              <Zap className="w-[15px] h-[15px] text-white/25" />
-              <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.35)" }}>Integrations</span>
-            </div>
-            <div className="flex items-center gap-2.5 px-2.5 py-[7px] rounded-[8px] cursor-not-allowed opacity-40"
-              style={{ border: "1px solid transparent" }}>
-              <Settings className="w-[15px] h-[15px] text-white/25" />
-              <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.35)" }}>Settings</span>
-            </div>
-          </div>
         </nav>
 
         {/* Status footer */}
